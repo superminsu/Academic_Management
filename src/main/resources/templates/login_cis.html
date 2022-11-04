@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>종합정보시스템 로그인</title>
+<style type="text/css">
+* {
+	margin-top: 10px;
+	padding: 0;
+}
+/* 상단 메뉴부분의 css	*/
+div { /*	드래그 불가	*/
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #333
+}
+
+#top {
+	display: flex;
+}
+/* 로고 이미지 */
+#inha {
+	margin-left: 90px;
+}
+
+#cis {
+	width: 320px;
+	margin: -10px;
+	margin-left: 120px;
+	font-size: 20px;
+	color: #333;
+	background: #fff;
+	text-align: center;
+	border-style: solid;
+	border-color: #fff;
+	font-weight: 600;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+/* 학교 이미지 */
+#imgSchool {
+	width: 700px(fixed);
+	height: 200px;
+	margin: 0 auto;
+	display: block;
+}
+/*	화면	*/
+#_view {
+	width: 96%;
+	height: 500px;
+	margin: 0px 20px 0px 20px;
+}
+/* 로그인 화면 */
+.main {
+	width: 700px;
+	height: 300px;
+	margin-top: 50px;
+	margin-left: 370px;
+	background-color: #F6F5FB;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+}
+
+#login_info {
+	margin-top: -2px;
+	width: 700px;
+	height: 30px;
+	background-color: #000080;
+	text-align: center;
+	line-height: 10px;
+}
+
+#login_info>p {
+	font-size: 12px;
+	color: #fff;
+}
+/* 로그인 버튼 */
+#login {
+	width: 100px;
+	height: 60px;
+	background-color: skyblue;
+	border-color: transparent;
+	color: white;
+}
+
+#login_look {
+	margin-left: 400px;
+	margin-top: 0px;
+}
+/* ID/PW 버튼*/
+#login_look>button {
+	display: inline;
+	width: 80px;
+	height: 30px;
+	background-color: skyblue;
+	border-color: transparent;
+	color: white;
+}
+button:hover {
+	cursor: pointer;
+}
+
+.account {
+	display: block;
+	margin-bottom: 3px;
+	padding: 3px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#alert {
+	border-color: transparent;
+}
+</style>
+</head>
+<body>
+	<!-- 상단 부분-->
+	<div style="margin-left: 50px" class="wrap_header">
+		<div id="top">
+		<!-- 로고 이미지 -->
+			<div style="display: block">
+				<a href="/" id="inha"> <img
+					src="https://www.inhatc.ac.kr/sites/kr/images/common/logo_b.png"
+					height="70" alt="인하공업전문대학" style="margin-top: 50px;">
+				</a>
+				<p id="cis">종합정보시스템 Login</p>
+			</div>
+			<!-- 학교 이미지 -->
+			<div id="imgSchool">
+				<img src="img/school2.jpg" width="700"
+					height="200" />
+			</div>
+		</div>
+	</div>
+	<hr color="#323232" size="2">
+	<!-- 뷰 부분-->
+	<div id=_view>
+		<div class="main">
+			<div id="login_info">
+				<p>서비스 이용을 위해 로그인을 해 주시기 바랍니다.</p>
+			</div>
+			<div class="container" style="margin-top: 50px;">
+			<form action="/signInCis" autocomplete="off" method="post">
+				<!-- ID/PW 입력창 -->
+				<table border="0" cellpadding="0" cellspacing="0" wdith="100%">
+					<tbody>
+						<tr>
+							<td height="30"><label
+								style="margin-left: 25px; margin-right: 50px;">아이디(학번)</label></td>
+							<td><input type="text" placeholder="ID" id="id" name="id"
+								class="account" style="width: 250px; margin-right: 100px;">
+							<td rowspan="2">
+								<button type="submit" id="login" class="account">login</button>
+						<tr>
+							<td height="30"><label
+								style="margin-left: 25px; margin-right: 50px;">패스워드</label></td>
+							<td><input type="password" placeholder="Password" name="pw"
+								id="pw" class="account"
+								style="width: 250px; margin-right: 100px;"></td>
+						</tr>
+					</tbody>
+				</table>
+				<p id="alert" class="account"></p>
+			</div>
+			</form>
+			<hr color="#323232" size="1">
+			<!-- ID/PW 찾기 -->
+			<div id="login_look">
+				<button class="account" style="margin-right: 50px;">학번조회</button>
+				<button class="account">PW찾기</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

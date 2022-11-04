@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>수강신청</title>
+<link rel="stylesheet" th:href="@{/css/lib/bootstrap.min.css}"></link>
+<style type="text/css">
+	#regist{
+		margin:0px;
+		font-size:20px;
+		font-weight:620;
+	}
+	#category{
+		background: #cfe8ff;
+	}
+	button[type="submit"]{
+		background: #b7dafd;
+	}
+	button[type="submit"]:hover{
+		background: #e1f0ff;
+		cursor:pointer
+	}
+	input[type="button"]{
+		background: #b7dafd;
+	}
+	input[type="button"]:hover{
+		background: #e1f0ff;
+		cursor:pointer
+	}
+</style>
+</head>
+<body>
+	<p id="regist"> ▲ 수강신청</p>
+	<!-- 검색 기능 -->
+	<div class="col-md-12 mt-4">
+		<form class="form-inline bd-highlight" role="search">
+			<select id="searchType" name="searchType" th:value="${searchType}">
+				<option value="">이수구분</option>
+				<option value="전공이론">전공이론</option>
+				<option value="전공실습">전공실습</option>
+				<option value="전공필수">전공필수</option>
+				<option value="교양교과">교양교과</option>
+			</select>
+       		<input type="text" name="keyword" class="form-control" id="searchVal" placeholder="교과목명 검색" th:value="${keyword}">
+       		<button type="button" class="btn btn-success bi bi-search" onclick="search()"><img src="img/search.png" alt=""></button>
+   		</form>
+   	</div>
+	<!-- (수강)게시판 -->
+		<div class="col-md-12 mt-4">
+			<table class="table table-striped table-horizontal table-bordered mt-3">
+				<colgroup>
+					<!-- 수강신청,학년,코드,분반,교과목명,이수구분,학점,담당교수,강의시간,인원제한,수강인원,개설학과,리뷰-->
+					<col width="5%" />
+					<col width="8%" />
+					<col width="5%" />
+					<col width="13%" />
+					<col width="7%" />
+					<col width="5%" />
+					<col width="8%" />
+					<col width="9%" />
+					<col width="7%" />
+					<col width="7%" />
+					<col width="12%" />
+					<col width="7%" />
+					<col width="7%" />
+				</colgroup>
+				<thead class="thead-strong">
+					<tr id="category">
+						<th scope="col">학년</th>
+						<th scope="col">코드</th>
+						<th scope="col">분반</th>
+						<th scope="col">교과목명</th>
+						<th scope="col">이수구분</th>
+						<th scope="col">학점</th>
+						<th scope="col">담당교수</th>
+						<th scope="col">강의시간</th>
+						<th scope="col">인원제한</th>
+						<th scope="col">수강인원</th>
+						<th scope="col">개설학과</th>
+						<th scope="col">수강신청</th>
+						<th scope="col">리뷰</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					<tr th:if="${#lists.size(list)} > 0" th:each="vo : ${list}">
+					<form action="/signCrReg" id="frm" method="post">
+						<input type="hidden" name="id" th:value="${session.id}">
+						<input type="hidden" name="crname" th:value="${vo.crname}">
+						<input type="hidden" name="crprofessor" th:value="${vo.crprofessor}">
+						<td th:text="${vo.crgrade}"></td>
+						<td th:text="${vo.crcode}"></td>
+						<td th:text="${vo.crban}"></td>	
+						<td th:text="${vo.crname}"></td>
+						<td th:text="${vo.crclass}"></td>
+						<td th:text="${vo.credit}"></td>
+						<td th:text="${vo.crprofessor}"></td>
+						<td th:text="${vo.crdate}"></td>
+						<td th:text="${vo.crlimit}"></td>
+						<td th:text="${vo.crperson}"></td>
+						<td th:text="${vo.crdept}"></td>
+						<td><button type="submit"  name="crcode" th:value="${vo.crcode}">신청</button></td>
+						</form>
+						<td>
+							<form action="/goreview" method="post">
+								<input type="hidden" name="crname" th:value="${vo.crname}"/>
+								<input type="hidden" name="crprofessor" th:value="${vo.crprofessor}"/>
+								<button type="submit" name="btn"/>리뷰</button>
+							</form>
+						</td>
+					</tr>
+					<tr th:unless="${#lists.size(list)} > 0">
+						<td colspan="13">조회된 결과가 없습니다.</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- 페이징 처리 -->
+			<div class="row" th:if="${totalPage != 0}">
+				<div class="col">
+					<ul class="pagination">
+						<li class="page-item" th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
+							<a class="page-link" th:classappend="${pageStat.index == pageNo} ? on" th:href="@{/cr_registration(page=${pageStat.index}, keyword=${keyword}, searchType=${searchType})}">
+								<span class="text-blue" th:text="${pageStat.index+1}"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!--부트스트랩 js, jquery 추가-->
+	<script src="/js/lib/jquery.min.js"></script>
+	<script src="/js/lib/bootstrap.min.js"></script>
+	<script th:inline="javascript">
+	//검색기능
+	function search(){
+	    var keyword = $.trim($("#searchVal").val());
+	    var searchType = $.trim($("#searchType").val());
+	    location.href="/cr_registration?keyword="+keyword+"&searchType="+searchType;
+	}
+</script>
+</body>
+</html>

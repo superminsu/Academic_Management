@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>인하공업 학사관리 시스템</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style type="text/css">
+	*{
+	margin:0;
+	padding:0;
+	}
+	.div_cont{clear:both;}
+	.hidden{display:none;}
+	
+	/* 상단 메뉴부분의 css	*/
+	div {	/*	드래그 불가	*/
+		-ms-user-select : none;
+		-moz-user-select : -moz-none;
+		-khtml-user-select : none;
+		-webkit-user-select : none;
+		user-select : none;
+	}
+	hr {
+		margin-top:20px;
+		margin-bottom:20px;
+		margin-left:20px;
+		margin-right:20px;
+	}
+	ul li{
+		list-style:none;
+	}
+	a{
+		text-decoration:none;
+		color:white;
+	}
+	a:link{
+		
+		text-decoration:none;
+	}
+	a:hover{
+		color:#e6e6e6;
+	}
+	#top{
+		display:flex;
+	}
+	#menuUItop{
+		font-size:25px;
+		width:900px;
+		height:30px;
+		line-height:50px;
+		margin:20px 0px 0px 50px;
+		text-align:center;
+		font-weight:600;
+	}
+	#menuUItop > ul > li{
+		float:left;
+		width:200px;
+		margin-left:200px;
+		position:relative;
+	}
+	#cis{
+		width:320px;
+		margin:-10px 0px 0px 0px;
+		font-size:25px;
+		color: white;
+		text-align:center;
+		font-weight:600;
+		-ms-user-select : none;
+		-moz-user-select : -moz-none;
+		-khtml-user-select : none;
+		-webkit-user-select : none;
+		-webkit-touch-callout:none;
+		user-select : none;
+	}
+	/*	화면	*/
+	#_view{
+		width:100%
+		height:650px;
+	}
+	/* 학사 공지 관련 */
+	table{
+		width:100%;;
+		height:100%;
+		border-spacing:0px;
+		border-collapse: collapse;
+		border:none;
+	}
+	tr{
+		background: #fff;
+		text-align:center;
+		font-size:20px;
+		border:none;
+	}
+	td{
+		height:20px;
+		border:none;
+	}
+	#category{
+		background:#000080;
+		color:#fff;
+		font-size:25px;
+		display:flex;
+		text-align:center;
+	}
+	#td_btn{
+		width:20%;
+		padding-top:20px;
+		padding-bottom:20px;
+		font-weight:800;
+	}
+	#td_btn:hover{
+		background:#5173e1;
+		cursor: pointer ;
+	}
+	#nsub{
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:80px;
+		text-align:left;
+	}
+	#ndate{
+		padding-right:80px;
+		text-align:right;
+	}
+	#trpoint:hover{
+		background-color:#ffffd8;
+	}
+	.on{
+		background:#5173e1;
+	}
+	/* 사이트 관련 정보 */
+	#footer{
+		border-top:2px solid;
+		border-bottom:2px solid;
+		border-color:#323232;
+		background-color:#444444;
+		width:100%;
+		height:200px;
+		clear:both;
+	}
+	#info > p{
+    	font-size: 10px;
+    	color: rgba(255,255,255,0.6);
+	}
+	#weatherP{
+		font-size:20px;
+		line-height:60px;
+		color:#1583AF;
+		margin:0 auto;
+		font-weight:600;
+	}
+	#temperatureP{
+		font-size:50px;
+		line-height:80px;
+		margin:0 auto;
+		font-weight:600;
+	}
+	#infodiv{
+		width:20%;
+		background-color:#009999;
+	}
+	#infoP{
+		font-size:34px;
+		margin:36px 0px 0px 60px;
+		font-weight:700;
+		color:white;
+	}
+	#infoB{
+		font-size:20px;
+		margin:-10px 0px 0px 60px;
+		font-weight:700;
+		color:#dddddd;
+	}
+	<!--학교 이미지-->
+	.carousel-inner > .carousel-item > img{
+		width: 100vm;
+		height: 56.25vh;
+	}
+	.v-line{
+ 		border-left: 2px solid #cae6e8;
+ 		height:150px;
+	}
+</style>
+</head>
+<body>
+ <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script type="text/javascript">
+ $(function(){ 
+  
+  $(".tab > ul li").click(function(){
+   var now_tab = $(this).index();
+   $(this).parent().find("li").removeClass("on");
+   $(this).parent().parent().parent().find(".div_cont").addClass("hidden");
+   $(this).parent().find("li").eq(now_tab).addClass("on");
+   $(this).parent().parent().parent().find(".div_cont").eq(now_tab).removeClass("hidden");
+  });
+ });
+</script>
+<!--학교 슬라이드 이미지-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+ crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+ integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+ crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+ crossorigin="anonymous"></script>
+<script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script>
+<div id="demo" class="carousel slide" style="position:absolute;" data-ride="carousel">
+	<div class="carousel-inner">
+		<!-- 슬라이드 쇼 -->
+		<div class="carousel-item active">
+			<!--가로-->
+			<img class="d-block w-100"
+			src="/img/icollege.png"
+			 alt="First slide">
+		</div>
+		<div class="carousel-item">
+			<img class="d-block w-100" src="https://www.inhatc.ac.kr/sites/kr/images/main/v_2.jpg" alt="Second slide">
+		</div>
+		<div class="carousel-item">
+			<img class="d-block w-100" src="https://www.inhatc.ac.kr/sites/kr/images/main/v_1.jpg" alt="Third slide">
+		</div>
+		<!-- / 슬라이드 쇼 끝 -->
+		<!-- 왼쪽 오른쪽 화살표 버튼 -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<!-- <span>Previous</span> --></a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<!-- <span>Next</span> --> </a>
+		<!-- / 화살표 버튼 끝 -->
+		<!-- 인디케이터 -->
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<!--0번부터시작-->
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+		</ul> <!-- 인디케이터 끝 -->
+</div>
+<!--  상단 메뉴부분 -->
+<div style="position:absolute; top:0; width:98%">
+	<hr color = "white" size="2">
+	<div style="margin-left:100px; height:20%;" class="wrap_header">
+		<div id="top" class="d-flex">
+			<div style="display:block">
+				<a href="/">
+				<img src="https://www.inhatc.ac.kr/sites/kr/images/common/logo_w.png" alt="인하공업전문대학">
+				</a>
+				<p id="cis">학사관리시스템</p>
+			</div>
+			<div id="menuUItop" class="d-flex">
+				<ul>
+				<li style="font-size:32px;" class="item"><a href="/login_cr">수강신청</a>
+				<li style="font-size:32px;" class="item"><a href="/login_cis">종합정보</a>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<hr color='white' size="2">
+</div>
+<!-- 뷰 부분 -->
+<div id="_view">
+	<!-- 날씨, 학사공지 -->
+	<div style="background-color: #e5fafc; height:150px; display:flex;">
+		<div style="padding: 30px 0px 30px 60px; width:20%; display:flex;">
+			<img th:src=${wimg} width="80px" height="80px"/>
+			<P th:text="${temperature}" id="temperatureP"></P>
+			<P th:text="${weather}" id="weatherP" style="width:50px;height:10px;"></P>
+		</div>
+		<div id="infodiv" class="v-line">
+		<p id="infoP">99.3%</p>
+		<p id="infoB">재학생 충원율</p>
+		</div>
+		<div id="infodiv" class="v-line">
+		<p id="infoP">100%</p>
+		<p id="infoB">신입생 충원율</p>
+		</div>
+		<div id="infodiv" class="v-line">
+		<p id="infoP">11,091,518원</p>
+		<p id="infoB">학생 1인당 지원 교육비</p>
+		</div>
+		<div id="infodiv" class="v-line">
+		<p id="infoP">3,966,051원</p>
+		<p id="infoB">학생 1인당 지원 장학금</p>
+		</div>
+	</div>
+	<div class="tab_area1">
+ 		<div class="tab"> 
+  			<ul id="category">
+   				<li class="on" id="td_btn"><a href="/">학사</a></li>
+   				<li id="td_btn" name="noticeE"><a href="/">행사</a></li>
+   				<li id="td_btn" name="noticeS"><a href="/">장학</a></li>
+   				<li id="td_btn" name="noticeEm"><a href="/">채용</a></li>
+   				<li id="td_btn" name="noticeN"><a href="/">일반</a></li>
+  			</ul>
+ 		</div>
+ 		<div style="margin-top:-15px;" class="div_cont">
+ 	 		<table>
+				<tr id="trpoint" th:each = "notice: ${noticestat}">
+					<td id="nsub" colspan="4">
+						<a th:href="${link1}" target="_blank">
+						<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+					</td>
+					<td th:text="${notice.date}" id="ndate" colspan="1">작성일</td>
+				</tr>
+			</table>
+ 		</div>
+ 		<div style="margin-top:-15px;" class="div_cont hidden">
+  			<table>
+				<tr id="trpoint" th:each = "notice: ${noticeEvent}">
+					<td id="nsub" colspan="4">
+						<a th:href="${link2}" target="_blank">
+						<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+					</td>
+					<td th:text="${notice.date}" id="ndate" colspan="1">작성일</td>
+				</tr>
+			</table>
+	 	</div>
+ 		<div style="margin-top:-15px;" class="div_cont hidden">
+	  		<table>
+				<tr id="trpoint" th:each = "notice: ${noticeScholarship}">
+					<td id="nsub" colspan="4">
+						<a th:href="${link3}" target="_blank">
+						<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+					</td>
+					<td th:text="${notice.date}" id="ndate" colspan="1">작성일</td>
+				</tr>
+			</table>
+ 		</div>
+ 		<div style="margin-top:-15px;" class="div_cont hidden">
+  			<table>
+				<tr id="trpoint" th:each = "notice: ${noticeEmployment}">
+					<td id="nsub" colspan="4">
+						<a th:href="${link4}" target="_blank">
+						<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+					</td>
+					<td th:text="${notice.date}" id="ndate" colspan="1">작성일</td>
+				</tr>
+			</table>
+ 		</div>
+ 		<div style="margin-top:-15px;" class="div_cont hidden">
+  			<table>
+				<tr id="trpoint" th:each = "notice: ${noticeNormal}">
+					<td id="nsub" colspan="4">
+						<a th:href="${link5}" target="_blank">
+						<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+					</td>
+					<td th:text="${notice.date}" id="ndate" colspan="1">작성일</td>
+				</tr>
+			</table>
+ 		</div>
+	</div>
+	<!-- 이미지 부분 -->
+</div>
+<!-- 사이트 관련 정보 -->
+<div id="footer">
+	<div id="info" style="margin-top:50px;text-align:center;">
+		<img src="https://www.inhatc.ac.kr/sites/kr/images/common/logo_foot.png" alt="인하공업전문대학">
+		<p>222212 인천광역시 미추홀구 인하로100 인하공업전문대학 TEL 032-870-2114</p>
+		<p>COPYRIGHT(c) INHA TECHNICAL COLLEGE. ALL RIGHTS RESERVED.</p>
+	</div>
+</div>
+</body>
+</html>

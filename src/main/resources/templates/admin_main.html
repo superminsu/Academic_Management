@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>인하공전 관리자 메뉴</title>
+<style type="text/css">
+	*{
+	margin:0;
+	padding:0;
+	}
+	/* 상단 메뉴부분의 css */
+	div { /*드래그 불가*/
+   		-ms-user-select: none; 
+   		-moz-user-select: -moz-none;
+   		-khtml-user-select: none;
+   		-webkit-user-select: none;
+   		user-select: none;
+ 	}
+	hr{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	ul li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color:#333;
+	}
+	#top{
+		display:flex;
+	}
+	#menuUItop {
+		font-size:25px;
+		width:700px(fixed);
+		height:30px;
+		background: #fff;
+		line-height:50px;
+		margin:0 auto;
+		text-align: center;
+		display: block;
+		border-style: solid;
+		border-color: #fff;
+		font-weight:600;
+	}
+	#menuUItop > ul > li {
+		float:left;
+		width:200px;
+		position:relative;
+	}
+	#menuUItop > ul > li:hover {
+		border-style: solid;
+		border-color: #fff #c8c8c8;
+	}
+	#admin_top{
+		width:320px;
+		margin:-20px;
+		font-size:20px;
+		color: #333;
+		background: #fff;
+		text-align: center;
+		border-style: solid;
+		border-color: #fff;
+		font-weight:600;
+		-webkit-touch-callout: none;
+  		-webkit-user-select: none;
+  		-khtml-user-select: none;
+  		-moz-user-select: none;
+  		-ms-user-select: none;
+  		user-select: none;
+	}
+	/*화면*/
+	#_view{
+		margin: 0px 0px 0px 30px;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript"> 
+function calcHeight(){
+ var the_height=
+ document.getElementById('_view').contentWindow.
+ document.body.scrollHeight+100;
+ document.getElementById('_view').height=
+ the_height;
+ document.getElementById('_view').style.overflow = "hidden";
+}
+</script>
+<hr color = "#323232" size="2">
+<!-- 상단 메뉴부분 -->
+<div style="margin-left:50px; width:1700px;" class="wrap_header">
+	<div id="top" class="container">
+		<div style="display:block">
+		<a href="/admin_main">
+			<img src="https://www.inhatc.ac.kr/sites/kr/images/common/logo_b.png" alt="인하공업전문대학">
+		</a>
+		<p id="admin_top">관리자 메뉴</p>
+		</div>
+		<div id="menuUItop" class="menuUItop">
+			<ul>
+				<li><a href="/admin_usercreate" target="_view">계정 생성</a>
+				</li>
+				<li><a href="/admin_userdelete" target="_view">계정 관리</a>
+				</li>
+				<li><a href="/admin_course" target="_view">강의 관리</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<hr color = "#323232" size="2">
+<iframe src = "/admin_usercreate" id="_view" onload="calcHeight();" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:96%; min-height:650px;" name="_view"></iframe>
+</body>
+</html>

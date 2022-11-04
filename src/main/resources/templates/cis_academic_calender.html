@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>학사일정조회</title>
+<style type="text/css">
+	#year{
+		width:220px;
+		height:40px;
+		text-align: center;
+		background: #000080;
+		color: #fff;
+		font-weight:600;
+		margin-left:40px;
+		padding-top:10px;
+		font-size:20px;
+	}
+	table{
+		width:800px;
+		margin-left:40px;
+		margin-right:40px;
+		height:650px;
+		border-spacing: 0px;
+	}
+	tr{
+		background: #fff;
+		padding-left: 20px;
+		text-align:left;
+	}
+	td{
+		height:50px;
+		border:1px solid #d0d0d0;
+		
+	}
+	#term{
+		background: #cfe8ff;
+		font-size:30px;
+		font-weight:600;
+		text-align:center;
+	}
+	#category{
+		background: #bee9b4;
+		font-size:20px;
+		font-weight:600;
+		text-align:center;
+	}
+	tr:nth-child(odd) { background-color: white; }
+	tr:nth-child(even) { background-color: #f0f7ff; }
+	#trsche{
+		padding-left:30px;
+		font-size:20px;
+		font-weight:500;
+	}
+</style>
+</head>
+<body>
+<div>
+	<p id="year">년도 : 2022</p>
+</div>
+	<div style="display:flex">
+	<table border="1" style="border-collapse: collapse;">
+		<tr id="term">
+			<td colspan="2">1학기</td>
+		</tr>
+		<tr id="category">
+			<td>날짜</td>
+			<td>행사</td>
+		</tr>
+		<tr th:each = "s: ${schedule_1}">
+			<td id="trsche" th:text="${s.dt}" style="font-weight:600; color:black;" ></td>
+			<td id="trsche" th:text="${s.dd}"></td>
+		</tr>
+	</table>
+	<table style="border-collapse: collapse;margin-left:50px" border="1">
+		<tr id="term">
+			<td colspan="2">2학기</td>
+		</tr>
+		<tr id="category">
+			<td>날짜</td>
+			<td>행사</td>
+		</tr>
+		<tr th:each = "s: ${schedule_2}">
+			<td id="trsche" th:text="${s.dt}" style="font-weight:600; color:black;" ></td>
+			<td id="trsche" th:text="${s.dd}"></td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

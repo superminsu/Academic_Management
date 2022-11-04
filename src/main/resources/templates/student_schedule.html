@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>개인시간표</title>
+<link rel="stylesheet" th:href="@{/css/lib/bootstrap.min.css}"></link>
+<style type="text/css">
+	#regist{
+		margin:0px;
+		font-size:20px;
+		font-weight:620;
+	}
+	table{
+		width:95%;
+		margin-left:40px;
+		margin-right:40px;
+		height:680px;
+		border-spacing: 0px;
+	}
+	tr{
+		border:3px solid;
+		background: #fff;
+		text-align: center;
+	}
+	td{
+		width:250px;
+		height:80px;
+		border:1px solid #d0d0d0;
+	}
+	#day{
+		background: #A8C8F9;
+		font-weight:600;
+	}
+	#time{
+		background: #ffdda6;
+		font-weight:600;
+	}
+</style>
+</head>
+<body>
+	<p id="regist"> ▲ 개인시간표</p>
+	<table border="1">
+		<tr id="day">
+			<td style="background:#fff">교시</td>
+			<td>월</td>
+			<td>화</td>
+			<td>수</td>
+			<td>목</td>
+			<td>금</td>
+		</tr>
+		<tr>
+			<td id="time">1<br>(9:00~9:50)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월1~2') or #strings.equals(vo.crdate, '월1~3')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화1~2') or #strings.equals(vo.crdate, '화1~3')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수1~2') or #strings.equals(vo.crdate, '수1~3')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목1~2') or #strings.equals(vo.crdate, '목1~3')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금1~2') or #strings.equals(vo.crdate, '금1~3')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">2<br>(9:55~10:45)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월1~2') or #strings.equals(vo.crdate, '월1~3') or #strings.equals(vo.crdate, '월2~3') or #strings.equals(vo.crdate, '월2~4')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화1~2') or #strings.equals(vo.crdate, '화1~3') or #strings.equals(vo.crdate, '화2~3') or #strings.equals(vo.crdate, '화2~4')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수1~2') or #strings.equals(vo.crdate, '수1~3') or #strings.equals(vo.crdate, '수2~3') or #strings.equals(vo.crdate, '수2~4')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목1~2') or #strings.equals(vo.crdate, '목1~3') or #strings.equals(vo.crdate, '목2~3') or #strings.equals(vo.crdate, '목2~4')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금1~2') or #strings.equals(vo.crdate, '금1~3') or #strings.equals(vo.crdate, '금2~3') or #strings.equals(vo.crdate, '금2~4')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">3<br>(10:50~11:40)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월1~3') or #strings.equals(vo.crdate, '월2~3') or #strings.equals(vo.crdate, '월2~4') or #strings.equals(vo.crdate, '월3~4') or #strings.equals(vo.crdate, '월3~5')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화1~3') or #strings.equals(vo.crdate, '화2~3') or #strings.equals(vo.crdate, '화2~4') or #strings.equals(vo.crdate, '화3~4') or #strings.equals(vo.crdate, '화3~5')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수1~3') or #strings.equals(vo.crdate, '수2~3') or #strings.equals(vo.crdate, '수2~4') or #strings.equals(vo.crdate, '수3~4') or #strings.equals(vo.crdate, '수3~5')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목1~3') or #strings.equals(vo.crdate, '목2~3') or #strings.equals(vo.crdate, '목2~4') or #strings.equals(vo.crdate, '목3~4') or #strings.equals(vo.crdate, '목3~5')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금1~3') or #strings.equals(vo.crdate, '월2~3') or #strings.equals(vo.crdate, '금2~4') or #strings.equals(vo.crdate, '금3~4') or #strings.equals(vo.crdate, '금3~5')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">4<br>(11:45~12:35)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월2~4') or #strings.equals(vo.crdate, '월3~4') or #strings.equals(vo.crdate, '월3~5') or #strings.equals(vo.crdate, '월4~5') or #strings.equals(vo.crdate, '월4~6')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화2~4') or #strings.equals(vo.crdate, '화3~4') or #strings.equals(vo.crdate, '화3~5') or #strings.equals(vo.crdate, '화4~5') or #strings.equals(vo.crdate, '화4~6')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수2~4') or #strings.equals(vo.crdate, '수3~4') or #strings.equals(vo.crdate, '수3~5') or #strings.equals(vo.crdate, '수4~5') or #strings.equals(vo.crdate, '수4~6')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목2~4') or #strings.equals(vo.crdate, '목3~4') or #strings.equals(vo.crdate, '목3~5') or #strings.equals(vo.crdate, '목4~5') or #strings.equals(vo.crdate, '목4~6')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금2~4') or #strings.equals(vo.crdate, '금3~4') or #strings.equals(vo.crdate, '금3~5') or #strings.equals(vo.crdate, '금4~5') or #strings.equals(vo.crdate, '금4~6')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">5<br>(12:40~13:30)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월3~5') or #strings.equals(vo.crdate, '월4~5') or #strings.equals(vo.crdate, '월4~6') or #strings.equals(vo.crdate, '월5~6') or #strings.equals(vo.crdate, '월5~7')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화3~5') or #strings.equals(vo.crdate, '화4~5') or #strings.equals(vo.crdate, '화4~6') or #strings.equals(vo.crdate, '화5~6') or #strings.equals(vo.crdate, '화5~7')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수3~5') or #strings.equals(vo.crdate, '수4~5') or #strings.equals(vo.crdate, '수4~6') or #strings.equals(vo.crdate, '수5~6') or #strings.equals(vo.crdate, '수5~7')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목3~5') or #strings.equals(vo.crdate, '목4~5') or #strings.equals(vo.crdate, '목4~6') or #strings.equals(vo.crdate, '목5~6') or #strings.equals(vo.crdate, '목5~7')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금3~5') or #strings.equals(vo.crdate, '금4~5') or #strings.equals(vo.crdate, '금4~6') or #strings.equals(vo.crdate, '금5~6') or #strings.equals(vo.crdate, '금5~7')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">6<br>(13:35~14:25)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월4~6') or #strings.equals(vo.crdate, '월5~6') or #strings.equals(vo.crdate, '월5~7') or #strings.equals(vo.crdate, '월6~7') or #strings.equals(vo.crdate, '월6~8')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화4~6') or #strings.equals(vo.crdate, '화5~6') or #strings.equals(vo.crdate, '화5~7') or #strings.equals(vo.crdate, '화6~7') or #strings.equals(vo.crdate, '화6~8')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수4~6') or #strings.equals(vo.crdate, '수5~6') or #strings.equals(vo.crdate, '수5~7') or #strings.equals(vo.crdate, '수6~7') or #strings.equals(vo.crdate, '수6~8')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목4~6') or #strings.equals(vo.crdate, '목5~6') or #strings.equals(vo.crdate, '목5~7') or #strings.equals(vo.crdate, '목6~7') or #strings.equals(vo.crdate, '목6~8')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금4~6') or #strings.equals(vo.crdate, '금5~6') or #strings.equals(vo.crdate, '금5~7') or #strings.equals(vo.crdate, '금6~7') or #strings.equals(vo.crdate, '금6~8')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">7<br>(14:30~15:20)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월5~7') or #strings.equals(vo.crdate, '월6~7') or #strings.equals(vo.crdate, '월6~8') or #strings.equals(vo.crdate, '월7~8') or #strings.equals(vo.crdate, '월7~9')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화5~7') or #strings.equals(vo.crdate, '화6~7') or #strings.equals(vo.crdate, '화6~8') or #strings.equals(vo.crdate, '화7~8') or #strings.equals(vo.crdate, '화7~9')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수5~7') or #strings.equals(vo.crdate, '수6~7') or #strings.equals(vo.crdate, '수6~8') or #strings.equals(vo.crdate, '수7~8') or #strings.equals(vo.crdate, '수7~9')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목5~7') or #strings.equals(vo.crdate, '목6~7') or #strings.equals(vo.crdate, '목6~8') or #strings.equals(vo.crdate, '목7~8') or #strings.equals(vo.crdate, '목7~9')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금5~7') or #strings.equals(vo.crdate, '금6~7') or #strings.equals(vo.crdate, '금6~8') or #strings.equals(vo.crdate, '금7~8') or #strings.equals(vo.crdate, '금7~9')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">8<br>(15:25~16:15)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월6~8') or #strings.equals(vo.crdate, '월7~8') or #strings.equals(vo.crdate, '월7~9') or #strings.equals(vo.crdate, '월8~9') or #strings.equals(vo.crdate, '월8~10')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화6~8') or #strings.equals(vo.crdate, '화7~8') or #strings.equals(vo.crdate, '화7~9') or #strings.equals(vo.crdate, '화8~9') or #strings.equals(vo.crdate, '화8~10')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수6~8') or #strings.equals(vo.crdate, '수7~8') or #strings.equals(vo.crdate, '수7~9') or #strings.equals(vo.crdate, '수8~9') or #strings.equals(vo.crdate, '수8~10')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목6~8') or #strings.equals(vo.crdate, '목7~8') or #strings.equals(vo.crdate, '목7~9') or #strings.equals(vo.crdate, '목8~9') or #strings.equals(vo.crdate, '목8~10')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금6~8') or #strings.equals(vo.crdate, '금7~8') or #strings.equals(vo.crdate, '금7~9') or #strings.equals(vo.crdate, '금8~9') or #strings.equals(vo.crdate, '금8~10')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">9<br>(16:20~17:10)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월7~9') or #strings.equals(vo.crdate, '월8~9') or #strings.equals(vo.crdate, '월8~10') or #strings.equals(vo.crdate, '월9~10') or #strings.equals(vo.crdate, '월9~11')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화7~9') or #strings.equals(vo.crdate, '화8~9') or #strings.equals(vo.crdate, '화8~10') or #strings.equals(vo.crdate, '화9~10') or #strings.equals(vo.crdate, '화9~11')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수7~9') or #strings.equals(vo.crdate, '수8~9') or #strings.equals(vo.crdate, '수8~10') or #strings.equals(vo.crdate, '수9~10') or #strings.equals(vo.crdate, '수9~11')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목7~9') or #strings.equals(vo.crdate, '목8~9') or #strings.equals(vo.crdate, '목8~10') or #strings.equals(vo.crdate, '목9~10') or #strings.equals(vo.crdate, '목9~11')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금7~9') or #strings.equals(vo.crdate, '금8~9') or #strings.equals(vo.crdate, '금8~10') or #strings.equals(vo.crdate, '금9~10') or #strings.equals(vo.crdate, '금9~11')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">10<br>(17:15~18:05)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월8~10') or #strings.equals(vo.crdate, '월9~10') or #strings.equals(vo.crdate, '월9~11') or #strings.equals(vo.crdate, '월10~11') or #strings.equals(vo.crdate, '월10~12')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화8~10') or #strings.equals(vo.crdate, '화9~10') or #strings.equals(vo.crdate, '화9~11') or #strings.equals(vo.crdate, '화10~11') or #strings.equals(vo.crdate, '화10~12')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수8~10') or #strings.equals(vo.crdate, '수9~10') or #strings.equals(vo.crdate, '수9~11') or #strings.equals(vo.crdate, '수10~11') or #strings.equals(vo.crdate, '수10~12')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목8~10') or #strings.equals(vo.crdate, '목9~10') or #strings.equals(vo.crdate, '목9~11') or #strings.equals(vo.crdate, '목10~11') or #strings.equals(vo.crdate, '목10~12')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금8~10') or #strings.equals(vo.crdate, '금9~10') or #strings.equals(vo.crdate, '금9~11') or #strings.equals(vo.crdate, '금10~11') or #strings.equals(vo.crdate, '금10~12')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">11<br>(18:10~18:55)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월9~11') or #strings.equals(vo.crdate, '월10~11') or #strings.equals(vo.crdate, '월10~12') or #strings.equals(vo.crdate, '월11~12') or #strings.equals(vo.crdate, '월11~13')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화9~11') or #strings.equals(vo.crdate, '화10~11') or #strings.equals(vo.crdate, '화10~12') or #strings.equals(vo.crdate, '화11~12') or #strings.equals(vo.crdate, '화11~13')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수9~11') or #strings.equals(vo.crdate, '수10~11') or #strings.equals(vo.crdate, '수10~12') or #strings.equals(vo.crdate, '수11~12') or #strings.equals(vo.crdate, '수11~13')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목9~11') or #strings.equals(vo.crdate, '목10~11') or #strings.equals(vo.crdate, '목10~12') or #strings.equals(vo.crdate, '목11~12') or #strings.equals(vo.crdate, '목11~13')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금9~11') or #strings.equals(vo.crdate, '금10~11') or #strings.equals(vo.crdate, '금10~12') or #strings.equals(vo.crdate, '금11~12') or #strings.equals(vo.crdate, '금11~13')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">12<br>(19:00~19:45)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월10~12') or #strings.equals(vo.crdate, '월11~12') or #strings.equals(vo.crdate, '월11~13') or #strings.equals(vo.crdate, '월12~13') or #strings.equals(vo.crdate, '월12~14')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화10~12') or #strings.equals(vo.crdate, '화11~12') or #strings.equals(vo.crdate, '화11~13') or #strings.equals(vo.crdate, '화12~13') or #strings.equals(vo.crdate, '화12~14')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수10~12') or #strings.equals(vo.crdate, '수11~12') or #strings.equals(vo.crdate, '수11~13') or #strings.equals(vo.crdate, '수12~13') or #strings.equals(vo.crdate, '수12~14')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목10~12') or #strings.equals(vo.crdate, '목11~12') or #strings.equals(vo.crdate, '목11~13') or #strings.equals(vo.crdate, '목12~13') or #strings.equals(vo.crdate, '목12~14')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금10~12') or #strings.equals(vo.crdate, '금11~12') or #strings.equals(vo.crdate, '금11~13') or #strings.equals(vo.crdate, '금12~13') or #strings.equals(vo.crdate, '금12~14')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">13<br>(19:50~20:35)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월11~13') or #strings.equals(vo.crdate, '월12~13') or #strings.equals(vo.crdate, '월12~14') or #strings.equals(vo.crdate, '월13~14') or #strings.equals(vo.crdate, '월13~15')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화11~13') or #strings.equals(vo.crdate, '화12~13') or #strings.equals(vo.crdate, '화12~14') or #strings.equals(vo.crdate, '화13~14') or #strings.equals(vo.crdate, '화13~15')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수11~13') or #strings.equals(vo.crdate, '수12~13') or #strings.equals(vo.crdate, '수12~14') or #strings.equals(vo.crdate, '수13~14') or #strings.equals(vo.crdate, '수13~15')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목11~13') or #strings.equals(vo.crdate, '목12~13') or #strings.equals(vo.crdate, '목12~14') or #strings.equals(vo.crdate, '목13~14') or #strings.equals(vo.crdate, '목13~15')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금11~13') or #strings.equals(vo.crdate, '금12~13') or #strings.equals(vo.crdate, '금12~14') or #strings.equals(vo.crdate, '금13~14') or #strings.equals(vo.crdate, '금13~15')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">14<br>(20:40~21:25)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월12~14') or #strings.equals(vo.crdate, '월13~14') or #strings.equals(vo.crdate, '월13~15') or #strings.equals(vo.crdate, '월14~15') or #strings.equals(vo.crdate, '월14~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화12~14') or #strings.equals(vo.crdate, '화13~14') or #strings.equals(vo.crdate, '화13~15') or #strings.equals(vo.crdate, '화14~15') or #strings.equals(vo.crdate, '화14~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수12~14') or #strings.equals(vo.crdate, '수13~14') or #strings.equals(vo.crdate, '수13~15') or #strings.equals(vo.crdate, '수14~15') or #strings.equals(vo.crdate, '수14~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목12~14') or #strings.equals(vo.crdate, '목13~14') or #strings.equals(vo.crdate, '목13~15') or #strings.equals(vo.crdate, '목14~15') or #strings.equals(vo.crdate, '목14~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금12~14') or #strings.equals(vo.crdate, '금13~14') or #strings.equals(vo.crdate, '금13~15') or #strings.equals(vo.crdate, '금14~15') or #strings.equals(vo.crdate, '금14~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">15<br>(21:30~22:15)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월13~15') or #strings.equals(vo.crdate, '월14~15') or #strings.equals(vo.crdate, '월14~16') or #strings.equals(vo.crdate, '월15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화13~15') or #strings.equals(vo.crdate, '화14~15') or #strings.equals(vo.crdate, '화14~16') or #strings.equals(vo.crdate, '화15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수13~15') or #strings.equals(vo.crdate, '수14~15') or #strings.equals(vo.crdate, '수14~16') or #strings.equals(vo.crdate, '수15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목13~15') or #strings.equals(vo.crdate, '목14~15') or #strings.equals(vo.crdate, '목14~16') or #strings.equals(vo.crdate, '목15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금13~15') or #strings.equals(vo.crdate, '금14~15') or #strings.equals(vo.crdate, '금14~16') or #strings.equals(vo.crdate, '금15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+		<tr>
+			<td id="time">16<br>(22:20~23:05)</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '월14~16') or #strings.equals(vo.crdate, '월15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '화14~16') or #strings.equals(vo.crdate, '화15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '수14~16') or #strings.equals(vo.crdate, '수15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '목14~16') or #strings.equals(vo.crdate, '목15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+			<td>
+				<span th:each="vo : ${list}"  th:if="${#strings.equals(vo.crdate, '금14~16') or #strings.equals(vo.crdate, '금15~16')}" th:utext="|${vo.crname}&lt;br /&gt;${vo.crprofessor}&lt;br /&gt;${vo.crroom}|"></span>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

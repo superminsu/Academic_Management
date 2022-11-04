@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>사용자 리스트</title>
+<link rel="stylesheet" th:href="@{/css/lib/bootstrap.min.css}"></link>
+<style>
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+			<h2></h2>
+			<!-- 검색 기능 -->
+			<div class="col-md-12 mt-4">
+				<form class="form-inline bd-highlight" role="search">
+	        		<input type="text" name="keyword" class="form-control" id="searchVal" placeholder="검색" th:value="${keyword}">
+	        		<button type="button" class="btn btn-success bi bi-search" onclick="search()"><img src="img/search.png" alt=""></button>
+	    		</form>
+	    	</div>
+    		<!-- (회원)게시판 -->
+			<form action="/deleteMember" id="frm" method="post">
+				<div class="col-md-12 mt-4">
+					<table
+						class="table table-striped table-horizontal table-bordered mt-3">
+						<colgroup>
+							<!-- 체크박스, 아이디, 학과, 반 가로너비 -->
+							<col width="10%" />
+							<col width="40%" />
+							<col width="40%" />
+							<col width="10%" />
+						</colgroup>
+						<thead class="thead-strong">
+							<tr>
+								<th scope="col"><input type="checkbox" id="chkAll"></th>
+								<th scope="col">아이디</th>
+								<th scope="col">학과</th>
+								<th scope="col">반</th>
+							</tr>
+						</thead>
+						<tbody id="tbody">
+							<tr th:if="${#lists.size(list)} > 0" th:each="vo : ${list}">
+								<td><input type="checkbox" name="deleteId" th:value="${vo.mbrNo}"/></td>
+								<td><a th:text="${vo.id}" name="id" th:href="@{'detailMember/' + ${vo.mbrNo}}"></a></td>
+								<td th:text="${vo.dept}"></td>
+								<td th:text="${vo.ban}"></td>
+							</tr>
+							<tr th:unless="${#lists.size(list)} > 0">
+								<td colspan="4">조회된 결과가 없습니다.</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- 페이징 처리 -->
+					<div class="row" th:if="${totalPage != 0}">
+						<div class="col">
+							<ul class="pagination">
+								<li class="page-item" th:each="page : ${#numbers.sequence(0, totalPage - 1)}">
+									<a class="page-link" th:classappend="${pageStat.index == pageNo} ? on" th:href="@{/admin_userdelete(page=${pageStat.index}, keyword=${keyword})}">
+										<span class="text-blue" th:text="${pageStat.index+1}"></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<button type="button" class="btn btn-danger" onclick="fnDelete()">Delete</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--부트스트랩 js, jquery 추가-->
+	<script src="/js/lib/jquery.min.js"></script>
+	<script src="/js/lib/bootstrap.min.js"></script>
+	<script th:inline="javascript">
+		//head 체크박스 선택시 전체 체크, 전체 체크해제
+		$("#chkAll").click(function() {
+			if (this.checked) {
+				$("input[name='deleteId']").prop("checked", true);
+			} else {
+				$("input[name='deleteId']").prop("checked", false);
+			}
+		});
+		//회원 삭제 함수
+		function fnDelete() {
+			let delInpChkLen = $("input[name='deleteId']:checked").length;
+
+			if (delInpChkLen > 0) {
+				if (confirm("해당 회원을 삭제하시겠습니까?")) {
+					let frm = $("#frm");
+					frm.submit();
+				}
+			} else {
+				alert("선택된 회원이 없습니다.");
+			}
+		}
+		//검색기능
+		function search(){
+		    var keyword = $.trim($("#searchVal").val());
+		    location.href="/admin_userdelete?keyword="+keyword;
+		}
+	</script>
+</body>
+</html>

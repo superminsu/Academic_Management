@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>인하공전 수강신청 메뉴</title>
+<style type="text/css">
+	*{
+	margin:0;
+	padding:0;
+	}
+	/* 상단 메뉴부분의 css */
+	div { /*드래그 불가*/
+   		-ms-user-select: none; 
+   		-moz-user-select: -moz-none;
+   		-khtml-user-select: none;
+   		-webkit-user-select: none;
+   		user-select: none;
+ 	}
+	hr{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	ul li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color:#333;
+	}
+	#top{
+		display:flex;
+	}
+	#menuUItop {
+		font-size:25px;
+		width:300px(fixed);
+		height:30px;
+		background: #fff;
+		line-height:50px;
+		text-align: center;
+		display: block;
+		border-style: solid;
+		border-color: #fff;
+		position:absolute;
+		margin-left:400px;
+		font-weight:600;
+	}
+	#menuUItop > ul > li {
+		float:left;
+		width:200px;
+		position:relative;
+	}
+	#menuUItop > ul > li:hover {
+		border-style: solid;
+		border-color: #fff #c8c8c8;
+	}
+	#cis{
+		width:320px;
+		margin:-20px;
+		font-size:20px;
+		color: #333;
+		background: #fff;
+		text-align: center;
+		border-style: solid;
+		border-color: #fff;
+		font-weight:600;
+		-webkit-touch-callout: none;
+  		-webkit-user-select: none;
+  		-khtml-user-select: none;
+  		-moz-user-select: none;
+  		-ms-user-select: none;
+  		user-select: none;
+	}
+	#logout{
+		line-height:60px;
+		width:400px;
+		height:30px;
+		position:absolute;
+		right:0px;
+		display:flex;
+	}
+	#logout_id{
+		color:#459ab6;
+		font-size:15px;
+		text-align: center;
+		font-weight:600;
+		margin-right:30px;
+	}
+	input[type="button"]{
+		width:100px;
+		height:40px;
+		background: rgb(6,14,131);
+		margin:10px 0px 0px 0px;
+		color:#fff;
+		text-align: center;
+		font-size:15px;
+		font-weight: 200px;
+		cursor: pointer;
+		float:left;
+		border-radius: 5px;
+		outline: none;
+		transition: all 0.3s ease;
+		background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+	}
+	input[type="button"]:hover{
+		background: rgb(0,3,255);
+		background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+	}
+	/*화면*/
+	#_view{
+		margin-left:30px;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript"> 
+function calcHeight(){
+ var the_height=
+ document.getElementById('_view').contentWindow.
+ document.body.scrollHeight+100;
+ document.getElementById('_view').height=
+ the_height;
+ document.getElementById('_view').style.overflow = "hidden";
+}
+</script>
+<hr color = "#323232" size="2">
+<!-- 상단 메뉴부분 -->
+<div style="margin-left:50px; width:1700px;" class="wrap_header">
+	<div id="top" class="container">
+		<div style="display:block">
+		<a href="/cr_main">
+			<img src="https://www.inhatc.ac.kr/sites/kr/images/common/logo_b.png" alt="인하공업전문대학">
+		</a>
+		<p id="cis">수강신청시스템</p>
+		</div>
+		<div id="menuUItop" class="menuUItop">
+			<ul>
+				<li><a href="/cr_registration" target="_view">수강신청</a>
+				</li>
+				<li><a href="/cr_cancle" target="_view">수강신청취소</a>
+				</li>
+				<li><a href="/student_schedule" target="_view">개인시간표</a>
+				</li>
+			</ul>
+		</div>
+		<div id="logout">
+			<p id="logout_id" th:text="${session.id}"/>
+			<input type = 'button' id="logout_btn" name="logoutbtn" value='로그아웃' onclick="location.href='/'"/>
+			<input type = 'button' id="cis_btn" style="margin-left:20px" value='종합정보' onclick="location.href='/cis_main'"/>
+		</div>
+	</div>
+</div>
+<hr color = "#323232" size="2">
+<iframe src = "/cr_registration" id="_view" onload="calcHeight();" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:94%; min-height:750px;" name="_view"></iframe>
+</body>
+</html>

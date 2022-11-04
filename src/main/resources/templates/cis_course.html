@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>수강신청조회</title>
+<link rel="stylesheet" th:href="@{/css/lib/bootstrap.min.css}"></link>
+<style type="text/css">
+	#course{
+		width:220px;
+		height:60px;
+		text-align: center;
+		background: #000080;
+		color: #fff;
+		font-weight:600;
+		margin-left:40px;
+		padding-top:15px;
+		font-size:20px;
+	}
+	#category{
+		background: #cfe8ff;
+	}
+	button[type="submit"]{
+		background: #b7dafd;
+	}
+	button[type="submit"]:hover{
+		background: #e1f0ff;
+		cursor:pointer
+	}
+	input[type="button"]{
+		background: #b7dafd;
+	}
+	input[type="button"]:hover{
+		background: #e1f0ff;
+		cursor:pointer
+	}
+</style>
+</head>
+<body>
+	<p id="course">수강신청조회</p>
+		<div class="col-md-12 mt-4">
+		<input type="hidden" name="id" th:value="${session.id}">
+			<table class="table table-striped table-horizontal table-bordered mt-3">
+				<colgroup>
+					<!-- 수강취소,학년,코드,분반,교과목명,이수구분,학점,담당교수,강의시간,인원제한,수강인원,개설학과,리뷰-->
+					<col width="5%" />
+					<col width="8%" />
+					<col width="5%" />
+					<col width="13%" />
+					<col width="7%" />
+					<col width="5%" />
+					<col width="10%" />
+					<col width="9%" />
+					<col width="7%" />
+					<col width="7%" />
+					<col width="12%" />
+					<col width="5%" />
+				</colgroup>
+				<thead class="thead-strong">
+					<tr id="category">
+						<th scope="col">학년</th>
+						<th scope="col">코드</th>
+						<th scope="col">분반</th>
+						<th scope="col">교과목명</th>
+						<th scope="col">이수구분</th>
+						<th scope="col">학점</th>
+						<th scope="col">담당교수</th>
+						<th scope="col">강의시간</th>
+						<th scope="col">인원제한</th>
+						<th scope="col">수강인원</th>
+						<th scope="col">개설학과</th>
+						<th scope="col">리뷰</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					<tr th:if="${#lists.size(list)} > 0" th:each="vo : ${list}">
+						<input type="hidden" name="crNo" th:value="${vo.crNo}"/>
+						<input type="hidden" name="credit" th:value="${vo.credit}"/>
+						<input type="hidden" name="crlimit" th:value="${vo.crlimit}"/>
+						<input type="hidden" name="crperson" th:value="${vo.crperson}"/>
+						<td th:text="${vo.crgrade}"></td>
+						<td th:text="${vo.crcode}"></td>
+						<td th:text="${vo.crban}"></td>	
+						<td th:text="${vo.crname}"></td>
+						<td th:text="${vo.crclass}"></td>
+						<td th:text="${vo.credit}"></td>
+						<td th:text="${vo.crprofessor}"></td>
+						<td th:text="${vo.crdate}"></td>
+						<td th:text="${vo.crlimit}"></td>
+						<td th:text="${vo.crperson}"></td>
+						<td th:text="${vo.crdept}"></td>
+						<td><form action="/goreview" method="post">
+						<input type="hidden" name="crname" th:value="${vo.crname}"/>
+						<input type="hidden" name="crprofessor" th:value="${vo.crprofessor}"/>
+						<button type="submit" name="btn"/>리뷰</button>
+						</form></td>
+					</tr>
+					<tr th:unless="${#lists.size(list)} > 0">
+						<td colspan="13">신청한 강의가 없습니다.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</body>
+</html>

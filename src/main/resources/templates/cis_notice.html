@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>공지사항</title>
+<style type="text/css">
+	#notice{
+		margin:0px;
+		font-size:20px;
+		font-weight:620;
+	}
+	table{
+		width:99%;
+		height:680px;
+		border-spacing: 0px;
+	}
+	tr{
+		height:50px;
+		border:3px solid;
+		background: #fff;
+		text-align: center;
+	}
+	td{
+		border:1px solid #d0d0d0;
+		height: 30px;
+		font-size:20px;
+	}
+	#td_num{
+		width: 70px;
+	}
+	#td_job{
+		width: 100px;
+	}
+	#td_title{
+		padding-left: 20px;
+		text-align:left;
+	}
+	#td_wrname{
+		width: 80px;
+	}
+	#td_day{
+		width: 150px;
+	}
+	#category{
+		background: #000080;
+		color: #fff;
+		font-weight:600;
+	}
+	a{
+		text-decoration:none;
+		color:white;
+	}
+	a:link{
+		text-decoration:none;
+	}
+	a:hover{
+		color:#e6e6e6;
+	}
+	tr:nth-child(odd) { background-color: white; }
+	tr:nth-child(even) { background-color: #f0f7ff; }
+	tr:nth-child(odd):hover { background-color: #ffffd8; }
+	tr:nth-child(even):hover { background-color: #ffffd8; }
+</style>
+</head>
+<body>
+	<p id="notice"> ▲ 공지사항</p>
+	<table border="1">
+		<tr id="category">
+			<td>제목</td>
+			<td id="td_day">작성일자</td>
+		</tr>
+		<tr th:each = "notice: ${noticestat}">
+			<td id="td_title">
+				<a th:href="${link1}" target="_blank">
+				<strong th:text="${notice.subject}" style="font-weight:600; color:black;" ></strong>
+			</td>
+			<td th:text="${notice.date}">작성일</td>
+		</tr>
+		<tr></tr>
+	</table>
+</body>
+</html>
